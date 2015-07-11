@@ -12,8 +12,19 @@
 
 
 	<script type="text/javascript">
-		function logFolder(folder){
-			// Удачи!
+		function logFolder(folder,spaceCount) {
+			spaceCount = spaceCount || 0;
+				for(var fileName in folder) {
+					if(!(folder[fileName] instanceof  Object)) {
+						var marginLeft = new Array(spaceCount).join(' ');
+           				console.log(marginLeft + folder[fileName]);
+					} else {
+						for(var file in folder[fileName]) {
+							logFolder(folder[fileName][file], spaceCount + 4);
+						}
+					}
+				}
+			
 		}
 
 		window.onload = function(){

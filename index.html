@@ -12,8 +12,18 @@
 
 
 	<script type="text/javascript">
-		function logFolder(folder){
-			// Удачи!
+		function logFolder(forlder, tab){
+		    tab = tab || 0
+		    var t = [];
+		    for (var i = 0; i < tab; i++) {
+		       t.push("\t")
+		    };
+		    console.log(t.join("") + forlder.name);
+		    if (forlder.hasOwnProperty("files")){
+		        for (i in forlder.files) {
+		            logFolder(forlder.files[i], tab+1)
+		        }
+		    }
 		}
 
 		window.onload = function(){
@@ -46,7 +56,7 @@
 			logFolder(folder)
 		}
 	</script>
-</head>
+</head>	
 <body>
 	<div class="homework-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
 		<header class="homework-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">

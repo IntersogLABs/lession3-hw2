@@ -12,21 +12,19 @@
 
 
 	<script type="text/javascript">
-		function logFolder(folder) {
-			
-			function printStructure(dir, spaceCount) {
-				for(var fileName in dir) {
-					if(!(dir[fileName] instanceof  Object)) {
+		function logFolder(folder,spaceCount) {
+			spaceCount = spaceCount || 0;
+				for(var fileName in folder) {
+					if(!(folder[fileName] instanceof  Object)) {
 						var marginLeft = new Array(spaceCount).join(' ');
-           				console.log(marginLeft + dir[fileName]);
+           				console.log(marginLeft + folder[fileName]);
 					} else {
-						for(var file in dir[fileName]) {
-							printStructure(dir[fileName][file], spaceCount + 4);
+						for(var file in folder[fileName]) {
+							logFolder(folder[fileName][file], spaceCount + 4);
 						}
 					}
 				}
-			}
-			printStructure(folder, 0);
+			
 		}
 
 		window.onload = function(){

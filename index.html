@@ -12,9 +12,22 @@
 
 
 	<script type="text/javascript">
-		function logFolder(folder){
-			// Удачи!
+	function logFolder(folder,str){
+		if(str==undefined) {
+		str="";
 		}
+		for(var key in folder) {
+			if(Array.isArray(folder[key])) {
+				str+="\t";
+				for(var i=0;i<folder[key].length;i++) {
+					logFolder (folder[key][i],str);
+				}
+			}
+			else {
+				console.log(str+folder[key]);
+			}
+		}
+	}
 
 		window.onload = function(){
 			var folder = {

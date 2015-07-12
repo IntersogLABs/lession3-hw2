@@ -13,7 +13,16 @@
 
 	<script type="text/javascript">
 		function logFolder(folder){
-			// Удачи!
+			var INDENT = 3; //Этот параметр задает величину отступа для демонстрации вложенности
+			var spaceCounter = arguments[1] || 0;
+			var spaceString = new Array(spaceCounter+1).join(" ");
+
+			console.log(spaceString + folder.name);
+			if(folder.hasOwnProperty("files")){
+				for (var i = 0; i < folder.files.length; i++) {
+					logFolder(folder.files[i], spaceCounter+INDENT);
+				}
+			}
 		}
 
 		window.onload = function(){

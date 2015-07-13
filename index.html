@@ -13,7 +13,18 @@
 
 	<script type="text/javascript">
 		function logFolder(folder){
-			// Удачи!
+			console.log(logger('', folder, ''));
+			function logger(prefix, dataStruct) {
+				if (dataStruct.files===undefined) {
+					return prefix+dataStruct.name+'\n'
+				} else {
+					currentFolder = prefix + dataStruct.name + '\n';
+					prefix+='\t';
+					return currentFolder + dataStruct.files.reduce(function(acc, item) {
+						return acc+logger(prefix, item);
+					}, '')
+				}
+			}
 		}
 
 		window.onload = function(){

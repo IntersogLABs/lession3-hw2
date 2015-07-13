@@ -16,7 +16,7 @@
 		    var nesting = (+arguments[1]) ? +arguments[1] : 0 ;	// nesting = 0 on upper level.
 		    var isRecursion = !!arguments[2];
 
-		    var indent = function getIndent(numberOf, strings){    // typeof numberOf = Number, typeof strings = string.
+		    var indent = repetingString = function getIndent(numberOf, strings){    // typeof numberOf = Number, typeof strings = string.
 		        var result = "";
 		        for (var i = 0; i < numberOf; i++) {
 		            result += strings;
@@ -25,8 +25,8 @@
 		    }
 
 		    if (!isRecursion) {
-		        console.log("\nFolders & Files Names:" + indent(8 - nesting, "\t") + "Nesting Level:\n" + indent
-		        	(66, "_") + "\n");		 //    Header logging
+		        console.log("\nFolders & Files Names:" + indent
+		        (8 - nesting, "\t") + "Nesting Level:\n" + repetingString(66, "_") + "\n");		 //    Header logging
 		    };
 
 		    for (var nameOfField in object){

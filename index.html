@@ -12,8 +12,35 @@
 
 
 	<script type="text/javascript">
-		function logFolder(folder){
-			// Удачи!
+		function logFolder(object){
+		    var nesting = (+arguments[1]) ? +arguments[1] : 0 ;	// nesting = 0 on upper level.
+		    var isRecursion = !!arguments[2];
+
+		    var indent = function getIndent(numberOf, strings){    // typeof numberOf = Number, typeof strings = string.
+		        var result = "";
+		        for (var i = 0; i < numberOf; i++) {
+		            result += strings;
+		        };
+		        return result;          // getIndent(3, "\t")  => "\t\t\t"
+		    }
+
+		    if (!isRecursion) {
+		        console.log("\nFolders & Files Names:" + indent(8 - nesting, "\t") + "Nesting Level:\n" + indent
+		        	(66, "_") + "\n");		 //    Header logging
+		    };
+
+		    for (var nameOfField in object){
+		        if (typeof object[nameOfField] === "object" && Array.isArray(object[nameOfField])) {
+		            logFolder(object[nameOfField], nesting  + 1, true);	// has deeper nesting
+		        }
+		        else if (typeof object[nameOfField] === "object") {
+		            logFolder(object[nameOfField], nesting, true);	// has the same nesting
+		        }
+		        else if (object.hasOwnProperty(nameOfField)) {
+		            console.log(indent(nesting, "\t") + object[nameOfField] + indent
+		                (20 - object[nameOfField].length, " ") + indent(10 - nesting, "\t") + nesting );
+		        }
+		    }
 		}
 
 		window.onload = function(){

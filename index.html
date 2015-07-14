@@ -13,8 +13,20 @@
 
 	<script type="text/javascript">
 		function logFolder(folder){
-			// Удачи!
+			PrintStructure(folder, "")
 		}
+		
+		function PrintStructure(object, level){
+		  if (object.files) {
+		  PrintStructure(object.files,level+"\t")} else 
+		  if ( Array.isArray(object) ) {
+		for (var i = 0; i < object.length; i++)
+		PrintStructure(object[i], level)
+			}
+		  if (object.name){
+		console.log(level+object.name)
+			}
+		} 
 
 		window.onload = function(){
 			var folder = {

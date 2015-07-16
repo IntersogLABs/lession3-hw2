@@ -12,12 +12,22 @@
 
 
 	<script type="text/javascript">
-		function logFolder(folder){
-			// Удачи!
-		}
 
-		window.onload = function(){
-			var folder = {
+	function printfiles(objFiles, indnt){
+	for (var key in objFiles){
+		if (key == "name"){
+				  console.log(indnt + objFiles[key]);
+		}
+		else if (key == "files") {
+			indnt += '\t';
+			for (var obj in objFiles[key]) {
+				printfiles(objFiles[key][obj],indnt);
+			}	
+		} 
+		  
+	}
+     }
+	var folder = {
 				name:'папка 1',
 				files:[
 					{name:'file1'},
@@ -40,11 +50,13 @@
 						{name:'File9'},
 						{name:'фывфы 10'}
 					]}
-				]
+				],
+	PrintStructure: function(){
+		printfiles(this,'');
+	}
 			};
 
-			logFolder(folder)
-		}
+		
 	</script>
 </head>
 <body>

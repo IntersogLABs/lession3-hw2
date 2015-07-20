@@ -10,60 +10,13 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script src="js/material.js"></script>
 
-
-	<script type="text/javascript">
-		function logFolder(folder){
-			PrintStructure(folder, "")
-		}
-		
-		function PrintStructure(object, level){
-		  if (object.files) {
-		  PrintStructure(object.files,level+"\t")} else 
-		  if ( Array.isArray(object) ) {
-		for (var i = 0; i < object.length; i++)
-		PrintStructure(object[i], level)
-			}
-		  if (object.name){
-		console.log(level+object.name)
-			}
-		} 
-
-		window.onload = function(){
-			var folder = {
-				name:'папка 1',
-				files:[
-					{name:'file1'},
-					{name:'file2'},
-					{name:'папка 2', files: [
-						{name:'папка 3', files: [
-							{name:'file3'},
-							{name:'file4'}
-						]},
-						{name:'папка 44', files: [
-							{name:'папка 5',files: [
-								{name:'file6'},
-								{name:'file7'},
-								{name:'папка 6',files:[]},
-							]},
-						]}
-					]},
-					{name:'File8'},
-					{name:'FOlderxxxX',files: [
-						{name:'File9'},
-						{name:'фывфы 10'}
-					]}
-				]
-			};
-
-			logFolder(folder)
-		}
-	</script>
+	<script type="text/javascript"  src="js/for_index.js" charset="windows-1251"></script>
 </head>
 <body>
 	<div class="homework-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100">
 		<header class="homework-header mdl-layout__header mdl-layout__header--scroll mdl-color--grey-100 mdl-color-text--grey-800">
 			<div class="mdl-layout__header-row">
-				<span class="mdl-layout-title">Lession 3 - Homework 2 - Вывести файловую структуру</span>
+				<span class="mdl-layout-title" >Lession 3 - Homework 2 - Вывести файловую структуру</span>
 			</div>
 		</header>
 
@@ -108,6 +61,8 @@ var folder = {
 }
 						</pre>
 					</p>
+					<p><b>Решение:</b></p>
+					<div id="show_task"></div>
 				</div>
 			</div>
 		</main>
